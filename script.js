@@ -297,36 +297,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// ===== Hero Card Carousel =====
-document.addEventListener('DOMContentLoaded', () => {
-    const heroCards = document.querySelectorAll('.hero-card');
-    if (!heroCards.length) return;
-
-    let activeIndex = 0;
-
-    const applyHeroCardStates = () => {
-        heroCards.forEach((card, index) => {
-            card.classList.remove('is-active', 'is-next', 'is-prev', 'is-hidden');
-
-            if (index === activeIndex) {
-                card.classList.add('is-active');
-            } else if (index === (activeIndex + 1) % heroCards.length) {
-                card.classList.add('is-next');
-            } else if (index === (activeIndex - 1 + heroCards.length) % heroCards.length) {
-                card.classList.add('is-prev');
-            } else {
-                card.classList.add('is-hidden');
-            }
-        });
-    };
-
-    applyHeroCardStates();
-
-    setInterval(() => {
-        activeIndex = (activeIndex + 1) % heroCards.length;
-        applyHeroCardStates();
-    }, 3800);
-});
 
 // ===== Service Item Interactions =====
 document.addEventListener('DOMContentLoaded', () => {
