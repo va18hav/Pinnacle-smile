@@ -918,9 +918,63 @@ h6 {
 }
 
 /* ===== Responsive Design ===== */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+    .container,
+    .nav-container {
+        padding: 0 1.5rem;
+    }
+
+    .hero {
+        padding: 130px 1.5rem 60px;
+    }
+
     .hero-inner {
         flex-direction: column;
+        text-align: center;
+        gap: 2.5rem;
+    }
+
+    .hero-content {
+        text-align: center;
+        max-width: 640px;
+    }
+
+    .hero-highlight {
+        max-width: 540px;
+        width: 100%;
+    }
+
+    .hero-cta-group {
+        justify-content: center;
+    }
+
+    .hero-card {
+        padding: 1.75rem;
+    }
+
+    .hero-card-map iframe {
+        height: 260px;
+    }
+
+    .values-grid,
+    .services-grid,
+    .doctors-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--spacing-md);
+    }
+
+    .about-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-inner {
         text-align: center;
     }
 
@@ -929,9 +983,39 @@ h6 {
         max-width: 100%;
     }
 
-    .hero-carousel {
-        margin-top: 2.5rem;
-        max-width: 520px;
+    .hero-cta-group {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-cta {
+        width: 100%;
+    }
+
+    .hero-card {
+        padding: 1.5rem;
+    }
+
+    .hero-card-media {
+        margin-top: 1rem;
+    }
+
+    .hero-card-map iframe {
+        height: 220px;
+    }
+
+    .google-reviews-widget {
+        padding: 1rem;
+    }
+
+    .review-summary {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .review-controls {
+        justify-content: center;
     }
 
     .nav-menu {
@@ -968,7 +1052,7 @@ h6 {
     }
 
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.4rem;
     }
 
     .hero-subtitle {
@@ -979,25 +1063,19 @@ h6 {
         font-size: 2rem;
     }
 
-    .about-grid,
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .values-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
-
+    .values-grid,
+    .services-grid,
     .doctors-grid {
         grid-template-columns: 1fr;
     }
 
-    .testimonial-quote {
-        font-size: 1.4rem;
+    .testimonial-slider {
+        height: auto;
+        min-height: 180px;
+    }
+
+    .testimonial-item {
+        position: relative;
     }
 
     .cta-button {
@@ -1016,6 +1094,24 @@ h6 {
 
     .hero-title {
         font-size: 2rem;
+    }
+
+    .hero-card {
+        padding: 1.25rem;
+    }
+
+    .hero-card-map iframe {
+        height: 200px;
+    }
+
+    .review-controls {
+        gap: 0.5rem;
+    }
+
+    .review-control {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
     }
 
     .section-title {
