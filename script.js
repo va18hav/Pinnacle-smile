@@ -13,10 +13,18 @@ const appointmentForm = document.getElementById('appointment-form');
 const testimonialItems = document.querySelectorAll('.testimonial-item');
 const testimonialPrev = document.getElementById('testimonial-prev');
 const testimonialNext = document.getElementById('testimonial-next');
+const reviewSlider = document.querySelector('[data-review-slider]');
 
 // ===== State Management =====
 let currentTestimonial = 0;
+let currentReview = 0;
 let isModalOpen = false;
+let reviewSlides = [];
+let reviewPrevButton;
+let reviewNextButton;
+let reviewCurrentIndicator;
+let reviewTotalIndicator;
+let reviewIntervalId;
 
 // ===== Initialize =====
 document.addEventListener('DOMContentLoaded', () => {
@@ -24,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeScrollEffects();
     initializeModal();
     initializeTestimonialSlider();
+    initializeReviewSlider();
     initializeForms();
     initializeScrollAnimations();
 });
@@ -60,6 +69,67 @@ function initializeNavigation() {
             }
         });
     });
+}
+
+// ===== Google Review Slider =====
+function initializeReviewSlider() {
+    if (!reviewSlider) return;
+
+    reviewSlides = reviewSlider.querySelectorAll('[data-review-slide]');
+    reviewPrevButton = reviewSlider.querySelector('[data-review-prev]');
+    reviewNextButton = reviewSlider.querySelector('[data-review-next]');
+    reviewCurrentIndicator = reviewSlider.querySelector('.review-current');
+    reviewTotalIndicator = reviewSlider.querySelector('.review-total');
+
+    if (!reviewSlides.length) return;
+
+    reviewTotalIndicator.textContent = reviewSlides.length;
+    showReviewSlide(0);
+
+    reviewPrevButton?.addEventListener('click', () => {
+        pauseReviewAutoplay();
+        previousReview();
+    });
+
+    reviewNextButton?.addEventListener('click', () => {
+        pauseReviewAutoplay();
+        nextReview();
+    });
+
+    reviewIntervalId = setInterval(() => {
+        nextReview();
+    }, 6000);
+}
+
+function showReviewSlide(index) {
+    reviewSlides.forEach((slide, i) => {
+        const isActive = i === index;
+        slide.hidden = !isActive;
+        slide.classList.toggle('active', isActive);
+    });
+    currentReview = index;
+    if (reviewCurrentIndicator) {
+        reviewCurrentIndicator.textContent = index + 1;
+    }
+}
+
+function nextReview() {
+    if (!reviewSlides.length) return;
+    const nextIndex = (currentReview + 1) % reviewSlides.length;
+    showReviewSlide(nextIndex);
+}
+
+function previousReview() {
+    if (!reviewSlides.length) return;
+    const prevIndex = (currentReview - 1 + reviewSlides.length) % reviewSlides.length;
+    showReviewSlide(prevIndex);
+}
+
+function pauseReviewAutoplay() {
+    if (reviewIntervalId) {
+        clearInterval(reviewIntervalId);
+        reviewIntervalId = null;
+    }
 }
 
 // ===== Scroll Effects =====
