@@ -14,7 +14,6 @@
    <!-- Calendly badge widget begin -->
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-<script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/va18havrk3/30min?hide_gdpr_banner=1', text: 'Book Consultation', color: '#E8A634', textColor: '#1F2933', branding: false }); }</script>
 <!-- Calendly badge widget end -->
 </head>
 
@@ -46,14 +45,14 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section id="home" class="hero" data-animate="fade-up">
         <div class="hero-background">
             <video class="hero-background-video" autoplay muted playsinline poster="assets/HeroBg.jpg">
                 <source src="assets/HeroBg.mp4" type="video/mp4">
             </video>
         </div>
         <div class="hero-inner">
-            <div class="hero-content">
+            <div class="hero-content" data-animate="fade-right" data-animate-delay="0.1s">
                 <p class="hero-eyebrow">Boutique Dental Atelier</p>
                 <h1 class="hero-title animate-fade-in">Experience Dentistry at its Apex.</h1>
                 <p class="hero-subtitle">The Pinnacle Smile: Where world-class artistry meets clinical precision.</p>
@@ -62,7 +61,7 @@
                     
                 </div>
             </div>
-            <div class="hero-highlight" aria-label="Client feedback highlight">
+            <div class="hero-highlight" aria-label="Client feedback highlight" data-animate="fade-left" data-animate-delay="0.15s">
                 <article class="hero-card hero-card--single" aria-label="Google reviews and map">
                     <p class="hero-card-label">As seen on Google</p>
                     <div class="google-reviews-widget" data-review-slider>
@@ -106,19 +105,17 @@
                         </div>
                     </div>
 
-                    <div class="hero-card-media hero-card-map">
-                        <iframe title="The Pinnacle Smile on Google Maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.8240190348615!2d-73.98513052324634!3d40.75890997138741!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855d703efdf%3A0xdaa00247430e032!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
+                    
                 </article>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
+    <section id="about" class="about" data-animate="fade-left">
         <div class="container">
             <div class="about-grid">
-                <div class="about-content">
+                <div class="about-content" data-animate="fade-up" data-animate-delay="0.1s">
                     <h2 class="section-title">Our Philosophy: Precision & Care</h2>
                     <p class="about-text">
                         At The Pinnacle Smile, we believe that exceptional dentistry is a harmonious blend of
@@ -135,7 +132,7 @@
                         ensuring that each treatment is as precise as it is beautiful. Welcome to dentistry elevated.
                     </p>
                 </div>
-                <div class="about-image">
+                <div class="about-image" data-animate="fade-up" data-animate-delay="0.2s">
                     <img src="assets/About.jpg" alt="Lead Dental Professional">
                 </div>
             </div>
@@ -143,11 +140,11 @@
     </section>
 
     <!-- Why Us Section -->
-    <section id="why-us" class="why-us">
+    <section id="why-us" class="why-us" data-animate="fade-up">
         <div class="container">
             <h2 class="section-title">The Pinnacle Difference</h2>
             <div class="values-grid">
-                <div class="value-item">
+                <div class="value-item" data-animate="fade-up" data-animate-delay="0.05s">
                     <div class="value-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path d="M12 2L2 7L12 12L22 7L12 2Z" />
@@ -159,7 +156,7 @@
                     <p class="value-description">Master-crafted porcelain veneers that blend seamlessly with your
                         natural dentition, creating smiles of unparalleled beauty and authenticity.</p>
                 </div>
-                <div class="value-item">
+                <div class="value-item" data-animate="fade-up" data-animate-delay="0.15s">
                     <div class="value-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <rect x="3" y="3" width="18" height="18" rx="2" />
@@ -172,7 +169,7 @@
                     <p class="value-description">Advanced CAD/CAM technology and 3D imaging ensure precision planning
                         and flawless execution for every treatment we undertake.</p>
                 </div>
-                <div class="value-item">
+                <div class="value-item" data-animate="fade-up" data-animate-delay="0.25s">
                     <div class="value-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path
@@ -188,26 +185,26 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="services">
+    <section id="services" class="services" data-animate="fade-up">
         <div class="container">
             <h2 class="section-title">Our Curated Treatments</h2>
             <div class="services-grid">
-                <div class="service-item">
+                <div class="service-item" data-animate="fade-up" data-animate-delay="0.05s">
                     <h3 class="service-name">Aesthetic Veneers</h3>
                     <p class="service-description">Transform your smile with custom-crafted porcelain veneers that
                         deliver natural-looking, stunning results.</p>
                 </div>
-                <div class="service-item">
+                <div class="service-item" data-animate="fade-up" data-animate-delay="0.15s">
                     <h3 class="service-name">Digital Implantology</h3>
                     <p class="service-description">State-of-the-art dental implants using advanced digital planning for
                         precise, predictable outcomes.</p>
                 </div>
-                <div class="service-item">
+                <div class="service-item" data-animate="fade-up" data-animate-delay="0.25s">
                     <h3 class="service-name">Advanced Whitening</h3>
                     <p class="service-description">Professional-grade whitening treatments that safely and effectively
                         brighten your smile multiple shades.</p>
                 </div>
-                <div class="service-item">
+                <div class="service-item" data-animate="fade-up" data-animate-delay="0.35s">
                     <h3 class="service-name">Routine Wellness</h3>
                     <p class="service-description">Comprehensive preventive care and maintenance to preserve your
                         smile's health and beauty for years to come.</p>
@@ -217,11 +214,11 @@
     </section>
 
     <!-- Doctors Section -->
-    <section id="doctors" class="doctors">
+    <section id="doctors" class="doctors" data-animate="fade-up">
         <div class="container">
             <h2 class="section-title">Meet Our Specialists</h2>
             <div class="doctors-grid">
-                <div class="doctor-item">
+                <div class="doctor-item" data-animate="zoom-in" data-animate-delay="0.05s">
                     <div class="doctor-headshot">
                         <img src="assets/Sarah.jpg" alt="Dr. Sarah Mitchell">
                     </div>
@@ -229,7 +226,7 @@
                     <p class="doctor-title">Cosmetic & Restorative Dentistry</p>
                     <p class="doctor-focus">Specializing in smile transformations and aesthetic excellence.</p>
                 </div>
-                <div class="doctor-item">
+                <div class="doctor-item" data-animate="zoom-in" data-animate-delay="0.15s">
                     <div class="doctor-headshot">
                         <img src="assets/James.jpg" alt="Dr. James Chen">
                     </div>
@@ -237,7 +234,7 @@
                     <p class="doctor-title">Digital Implantology</p>
                     <p class="doctor-focus">Pioneering advanced implant solutions with precision technology.</p>
                 </div>
-                <div class="doctor-item">
+                <div class="doctor-item" data-animate="zoom-in" data-animate-delay="0.25s">
                     <div class="doctor-headshot">
                         <img src="assets/Elana.jpg" alt="Dr. Elena Rodriguez">
                     </div>
@@ -249,45 +246,14 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
-        <div class="container">
-            <h2 class="section-title">Client Reflections</h2>
-            <div class="testimonial-slider">
-                <div class="testimonial-item active">
-                    <blockquote class="testimonial-quote">
-                        "The Pinnacle Smile transformed not just my teeth, but my confidence. The attention to detail
-                        and artistic approach is unmatched in Manhattan."
-                    </blockquote>
-                    <cite class="testimonial-author">— A.K., Manhattan</cite>
-                </div>
-                <div class="testimonial-item">
-                    <blockquote class="testimonial-quote">
-                        "From the moment I walked in, I knew this was different. The technology, the comfort, the
-                        results—everything exceeded my highest expectations."
-                    </blockquote>
-                    <cite class="testimonial-author">— M.B., Upper East Side</cite>
-                </div>
-                <div class="testimonial-item">
-                    <blockquote class="testimonial-quote">
-                        "Dr. Mitchell's work is simply artistry. My veneers look so natural that people comment on my
-                        beautiful smile, not my dental work."
-                    </blockquote>
-                    <cite class="testimonial-author">— L.S., Tribeca</cite>
-                </div>
-            </div>
-            <div class="testimonial-controls">
-                <button class="testimonial-prev" id="testimonial-prev">‹</button>
-                <button class="testimonial-next" id="testimonial-next">›</button>
-            </div>
-        </div>
-    </section>
+   
+          
 
     <!-- Contact & Footer Section -->
-    <section id="contact" class="contact">
+    <section id="contact" class="contact" data-animate="fade-up">
         <div class="container">
             <div class="contact-grid">
-                <div class="contact-form-container">
+                <div class="contact-form-container" data-animate="fade-right" data-animate-delay="0.05s">
                     <h2 class="section-title">Get in Touch</h2>
                     <form class="contact-form" id="contact-form">
                         <div class="form-group">
@@ -303,7 +269,7 @@
                         <button type="submit" class="submit-btn">Send Message</button>
                     </form>
                 </div>
-                <div class="contact-info">
+                <div class="contact-info" data-animate="fade-left" data-animate-delay="0.15s">
                     <div class="contact-item">
                         <h3>Visit Us</h3>
                         <p>123 Park Avenue, Suite 400<br>New York, NY 10022</p>

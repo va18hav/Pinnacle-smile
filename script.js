@@ -14,6 +14,7 @@ const testimonialItems = document.querySelectorAll('.testimonial-item');
 const testimonialPrev = document.getElementById('testimonial-prev');
 const testimonialNext = document.getElementById('testimonial-next');
 const reviewSlider = document.querySelector('[data-review-slider]');
+const heroSection = document.getElementById('home');
 
 // ===== State Management =====
 let currentTestimonial = 0;
@@ -25,6 +26,7 @@ let reviewNextButton;
 let reviewCurrentIndicator;
 let reviewTotalIndicator;
 let reviewIntervalId;
+let calendlyBadgeInitialized = false;
 
 // ===== Initialize =====
 document.addEventListener('DOMContentLoaded', () => {
@@ -35,7 +37,55 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeReviewSlider();
     initializeForms();
     initializeScrollAnimations();
+    initializeCalendlyBadgeOnScroll();
 });
+
+function initializeCalendlyBadgeOnScroll() {
+    if (!heroSection) return;
+
+    const badgeConfig = {
+        url: 'https://calendly.com/va18havrk3/30min?hide_gdpr_banner=1',
+        text: 'Book Consultation',
+        color: '#E8A634',
+        textColor: '#1F2933',
+        branding: false
+    };
+
+    let heroObserver;
+
+    const attemptBadgeInit = () => {
+        if (calendlyBadgeInitialized) return;
+        if (typeof window.Calendly === 'undefined' || typeof window.Calendly.initBadgeWidget !== 'function') {
+            setTimeout(attemptBadgeInit, 200);
+            return;
+        }
+
+        window.Calendly.initBadgeWidget(badgeConfig);
+        calendlyBadgeInitialized = true;
+        window.removeEventListener('scroll', scrollListener);
+        heroObserver?.disconnect();
+    };
+
+    const scrollListener = () => {
+        const heroHeight = heroSection.offsetHeight || 0;
+        if (window.scrollY > heroHeight * 0.5) {
+            attemptBadgeInit();
+        }
+    };
+
+    heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+                attemptBadgeInit();
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    heroObserver.observe(heroSection);
+    window.addEventListener('scroll', scrollListener);
+}
 
 // ===== Navigation =====
 function initializeNavigation() {
@@ -208,17 +258,34 @@ function closeModal() {
 
 // ===== Testimonial Slider =====
 function initializeTestimonialSlider() {
+    if (!testimonialItems?.length) {
+        return;
+    }
+
+    const hasMultipleTestimonials = testimonialItems.length > 1;
+
     // Auto-rotate testimonials
-    setInterval(() => {
-        nextTestimonial();
-    }, 5000);
+    let testimonialIntervalId = null;
+    if (hasMultipleTestimonials) {
+        testimonialIntervalId = setInterval(() => {
+            nextTestimonial();
+        }, 5000);
+    }
 
     // Manual controls
-    testimonialPrev.addEventListener('click', () => {
+    testimonialPrev?.addEventListener('click', () => {
+        if (testimonialIntervalId) {
+            clearInterval(testimonialIntervalId);
+            testimonialIntervalId = null;
+        }
         prevTestimonial();
     });
 
-    testimonialNext.addEventListener('click', () => {
+    testimonialNext?.addEventListener('click', () => {
+        if (testimonialIntervalId) {
+            clearInterval(testimonialIntervalId);
+            testimonialIntervalId = null;
+        }
         nextTestimonial();
     });
 }
@@ -322,30 +389,45 @@ function showFormMessage(form, message, type) {
 
 // ===== Scroll Animations =====
 function initializeScrollAnimations() {
+    document.body.classList.add('animations-ready');
+
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.15,
+        rootMargin: '0px 0px -10% 0px'
     };
 
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
+                obs.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    // Observe elements for animation
-    const animatedElements = document.querySelectorAll('.fade-in');
-    animatedElements.forEach(element => {
-        observer.observe(element);
+    // Ensure every section participates in the animation system
+    const sections = document.querySelectorAll('section');
+    sections.forEach((section, index) => {
+        if (!section.dataset.animate) {
+            section.dataset.animate = 'fade-up';
+        }
+        section.classList.add('fade-in');
+        section.style.setProperty('--animate-delay', `${index * 0.05}s`);
     });
 
-    // Add fade-in class to sections
-    const sections = document.querySelectorAll('section');
-    sections.forEach(section => {
-        section.classList.add('fade-in');
-        observer.observe(section);
+    const combinedTargets = [
+        ...document.querySelectorAll('[data-animate]'),
+        ...document.querySelectorAll('.fade-in')
+    ];
+    const uniqueTargets = [...new Set(combinedTargets)];
+
+    uniqueTargets.forEach(element => {
+        element.classList.add('fade-in');
+        const delay = element.dataset.animateDelay;
+        if (delay) {
+            element.style.setProperty('--animate-delay', delay);
+        }
+        observer.observe(element);
     });
 }
 

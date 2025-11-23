@@ -299,7 +299,7 @@ h6 {
 .hero-card {
     position: relative;
     background: rgba(255, 255, 255, 0.08);
-    border: 2px solid #FFF;
+    border: 2px solid grey;
     border-radius: 30px;
     padding: 2rem;
     backdrop-filter: blur(22px);
